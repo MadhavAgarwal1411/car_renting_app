@@ -13,7 +13,7 @@ declare interface InputFieldProps extends TextInputProps {
 }
 
 declare interface ButtonProps extends TouchableOpacityProps {
-    title: string;
+    title?: string;
     bgVariant?: "primary" | "secondary" | "danger" | "outline" | "success";
     textVariant?: "primary" | "default" | "secondary" | "danger" | "success";
     IconLeft?: React.ComponentType<any>;

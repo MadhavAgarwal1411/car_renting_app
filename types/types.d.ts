@@ -10,6 +10,7 @@ declare interface InputFieldProps extends TextInputProps {
     inputStyle?: string;
     iconStyle?: string;
     className?: string;
+    inputModeType?: string;
 }
 
 declare interface ButtonProps extends TouchableOpacityProps {

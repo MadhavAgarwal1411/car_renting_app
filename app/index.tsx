@@ -1,12 +1,13 @@
 import CustomButton from "@/components/CustomButton";
 import { Images, Icons } from "@/constants";
 import { router } from "expo-router";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const index = () => {
   return (
     <SafeAreaView className="bg-zinc-500">
+      <ScrollView>
       <View className="h-screen w-full bg-znc-500 ">
         <View className="flex items-end px-5 py-5 ">
           <TouchableOpacity
@@ -49,6 +50,7 @@ const index = () => {
           </View>
         </View>
       </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

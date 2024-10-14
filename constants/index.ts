@@ -15,16 +15,23 @@ import innova from "@/assets/images/innova.png"
 import swift from "@/assets/images/swift.png"
 import alto from "@/assets/images/alto.png"
 import fortuner from "@/assets/images/fortuner.png"
+import edit from "@/assets/images/editicon.png"
+import profilepicture from "@/assets/images/profilepic.png"
+import paperIcon from "@/assets/images/Paper.png"
+import helpIcon from "@/assets/images/help.png"
+import rateIcon from "@/assets/images/Like.png"
+import settingIcon from "@/assets/images/setting.png"
+import logOutIcon from "@/assets/images/logout.png"
 
 
 
 export const Images={
 
-    heroImage,ashleyImage,slideFirst,mahindraLogo,hyundaiLogo,suzukiLogo,toyotaLogo,innova,swift,alto,fortuner
+    heroImage,ashleyImage,slideFirst,mahindraLogo,hyundaiLogo,suzukiLogo,toyotaLogo,innova,swift,alto,fortuner,profilepicture
 }
 export const Icons={
 
-    angleIcon,homeIcon,profileIcon,searchIcon,tripIcon,rentIcon
+    angleIcon,homeIcon,profileIcon,searchIcon,tripIcon,rentIcon,edit,paperIcon,helpIcon,rateIcon,settingIcon,logOutIcon
 }
 
 export const onboarding = [

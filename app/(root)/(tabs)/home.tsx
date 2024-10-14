@@ -19,6 +19,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const DATA = [
   { logo: Images.hyundaiLogo },
+  
   { logo: Images.mahindraLogo },
   { logo: Images.suzukiLogo },
   { logo: Images.toyotaLogo },

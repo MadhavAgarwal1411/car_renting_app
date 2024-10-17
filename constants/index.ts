@@ -22,16 +22,19 @@ import helpIcon from "@/assets/images/help.png"
 import rateIcon from "@/assets/images/Like.png"
 import settingIcon from "@/assets/images/setting.png"
 import logOutIcon from "@/assets/images/logout.png"
-
+import facebookIcon from "@/assets/images/Facebook.png"
+import googleIcon from "@/assets/images/Google.png"
+import appleIcon from "@/assets/images/apple.png"
+import exitIcon from "@/assets/images/exit.png"
 
 
 export const Images={
 
-    heroImage,ashleyImage,slideFirst,mahindraLogo,hyundaiLogo,suzukiLogo,toyotaLogo,innova,swift,alto,fortuner,profilepicture
+    heroImage,ashleyImage,slideFirst,mahindraLogo,hyundaiLogo,suzukiLogo,toyotaLogo,innova,swift,alto,fortuner,profilepicture,
 }
 export const Icons={
 
-    angleIcon,homeIcon,profileIcon,searchIcon,tripIcon,rentIcon,edit,paperIcon,helpIcon,rateIcon,settingIcon,logOutIcon
+    angleIcon,homeIcon,profileIcon,searchIcon,tripIcon,rentIcon,edit,paperIcon,helpIcon,rateIcon,settingIcon,logOutIcon,facebookIcon,googleIcon,appleIcon,exitIcon
 }
 
 export const onboarding = [

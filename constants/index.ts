@@ -29,6 +29,7 @@ import exitIcon from "@/assets/images/exit.png";
 import tripCar from "@/assets/images/tripcar1.png";
 import messageIcon from "@/assets/images/message.png";
 import callIcon from "@/assets/images/call.png";
+import plusIcon from "@/assets/images/plus sign.png"
 
 
 export const Images = {
@@ -67,6 +68,7 @@ export const Icons = {
   exitIcon,
   messageIcon,
   callIcon,
+  plusIcon
 };
 
 export const onboarding = [

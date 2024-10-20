@@ -65,9 +65,9 @@ import signIn from "./(auth)/sign-in"
 
 
 const Home = () => {
-  const IsSignedIn=false
+  const IsSignedIn=true
   if(IsSignedIn) {
-    return <Redirect href={"/(root)/(tabs)/home"}/>
+    return <Redirect href={"/(root)/(tabs)/rent"}/>
 
   }
   

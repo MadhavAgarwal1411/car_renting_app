@@ -2,15 +2,16 @@ import CustomButton from "@/components/CustomButton";
 import InputField from "@/components/InputField";
 import { Icons } from "@/constants";
 import { router } from "expo-router";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const signUp = () => {
   return (
     <SafeAreaView>
-      <View>
+      <ScrollView>
+      <View className="mb-40">
         <TouchableOpacity onPress={() => {
-          router.replace("/(auth)/welcome")
+          router.push("/(auth)/welcome")
         }}>
           <Image source={Icons.exitIcon} className="mt-8 ml-6" />
         </TouchableOpacity>
@@ -20,9 +21,9 @@ const signUp = () => {
             Create Account
           </Text>
           <Text className="m-3 text-center font-LeagueSpartanRegular text-base mt-5 ">
-            {" "}
+            
             Welcome ! Sign up to access your account, manage bookings, and enjoy
-            a smooth car rental experience.{" "}
+            a smooth car rental experience.
           </Text>
         </View>
 
@@ -33,6 +34,8 @@ const signUp = () => {
             containerStyle="py-2 px-6 rounded-2xl mb-6 "
             labelStyle="font-LeagueSpartanRegular text-2xl w-3/4 m-auto mb-3"
             inputStyle="font-LeagueSpartanRegular text-xl"
+            editable={true}
+            inputModeType="text"
           />
           <InputField
             label="Email"
@@ -40,6 +43,8 @@ const signUp = () => {
             containerStyle="py-2 px-6 rounded-2xl mb-6 "
             labelStyle="font-LeagueSpartanRegular text-2xl w-3/4 m-auto mb-3"
             inputStyle="font-LeagueSpartanRegular text-xl"
+            editable={true}
+            inputModeType="email"
           />
           <InputField
             label="Password"
@@ -47,6 +52,8 @@ const signUp = () => {
             containerStyle="py-2 px-6 rounded-2xl mb-6 "
             labelStyle="font-LeagueSpartanRegular text-2xl w-3/4 m-auto mb-3"
             inputStyle="font-LeagueSpartanRegular text-xl"
+            editable={true}
+            inputModeType="password"
           />
         </View>
 
@@ -58,8 +65,8 @@ const signUp = () => {
         <View className="w-3/4 m-auto h-[2px] rounded-full mt-7 bg-button-color"></View>
         <View>
           <Text className="text-center font-LeagueSpartanMedium text-base mt-5 mb-6 ">
-            {" "}
-            Or Sign up with{" "}
+            
+            Or Sign up with
           </Text>
           <View className="flex flex-row justify-center items-center  gap-7">
             <Image source={Icons.facebookIcon} />
@@ -68,7 +75,9 @@ const signUp = () => {
           </View>
         </View>
       </View>
+      </ScrollView>
     </SafeAreaView>
+
   );
 };
 

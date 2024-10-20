@@ -6,11 +6,11 @@ import { View,Text } from "react-native"
 
 
 const InputField = ( {
-label,labelStyle,icon,containerStyle,iconStyle,inputStyle,inputModeType,className,...props
+label,labelStyle,icon,containerStyle,iconStyle,inputStyle,inputModeType,className,editable=false,...props
 }:InputFieldProps ) => {
    
-   const [isEditable,setEditable ] =useState(false)
-
+   const [isEditable,setEditable ] =useState(editable)
+  
     return (
         <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}

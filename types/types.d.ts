@@ -1,6 +1,8 @@
 
 
+import React from "react";
 import {TextInputProps, TouchableOpacityProps} from "react-native";
+
 declare interface InputFieldProps extends TextInputProps {
     label: string;
     icon?: any;
@@ -11,6 +13,7 @@ declare interface InputFieldProps extends TextInputProps {
     iconStyle?: string;
     className?: string;
     inputModeType?: string;
+    editable?: boolean;
 }
 
 declare interface ButtonProps extends TouchableOpacityProps {
@@ -21,4 +24,16 @@ declare interface ButtonProps extends TouchableOpacityProps {
     IconRight?: React.ComponentType<any>;
     classname?: string;
     textStyle?: string;
+}
+declare interface TripHistoryDetails {
+    tripId: string;
+    tripDate: string;
+    tripTime: string;
+    tripOrigin: string;
+    tripDestination: string;
+    tripStatus: string;
+    tripDistance: string;
+    tripDuration: string;
+    carImage?: React.ComponentType<any>;
+    
 }

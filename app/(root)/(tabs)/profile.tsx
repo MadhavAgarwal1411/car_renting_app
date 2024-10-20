@@ -21,7 +21,8 @@ const profile = () => {
   return (
    <SafeAreaView>
     <ScrollView>
-      <View className="flex justify-center items-center">
+      <View className="mb-40">
+      <View className="flex justify-center items-center ">
       <Image  source={Images.profilepicture}/>
       </View>
       <View className="flex mb-10">
@@ -49,7 +50,7 @@ const profile = () => {
 
       />
 
-      
+</View>
     </ScrollView>
    </SafeAreaView>
   )

@@ -2,13 +2,14 @@ import CustomButton from "@/components/CustomButton";
 import InputField from "@/components/InputField";
 import { Icons } from "@/constants";
 import { router } from "expo-router";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const signIn = () => {
   return (
     <SafeAreaView>
-      <View>
+      <ScrollView>
+      <View className="mb-40">
         <TouchableOpacity
           onPress={() => {
             router.replace("/(auth)/welcome");
@@ -35,6 +36,9 @@ const signIn = () => {
             containerStyle="py-2 px-6 rounded-2xl mb-6 "
             labelStyle="font-LeagueSpartanRegular text-2xl w-3/4 m-auto mb-3"
             inputStyle="font-LeagueSpartanRegular text-xl"
+            editable={true}
+            inputModeType="email"
+            
           />
           <InputField
             label="Password"
@@ -42,6 +46,8 @@ const signIn = () => {
             containerStyle="py-2 px-6 rounded-2xl mb-6 "
             labelStyle="font-LeagueSpartanRegular text-2xl w-3/4 m-auto mb-3"
             inputStyle="font-LeagueSpartanRegular text-xl"
+            editable={true}
+            inputModeType="password"
           />
         </View>
 
@@ -53,8 +59,8 @@ const signIn = () => {
         <View className="w-3/4 m-auto h-[2px] rounded-full mt-7 bg-button-color"></View>
         <View>
           <Text className="text-center font-LeagueSpartanMedium text-base mt-5 mb-6 ">
-            {" "}
-            Or Sign in with{" "}
+            
+            Or Sign in with
           </Text>
           <View className="flex flex-row justify-center items-center  gap-7">
             <Image source={Icons.facebookIcon} />
@@ -62,15 +68,18 @@ const signIn = () => {
             <Image source={Icons.appleIcon} />
           </View>
           <View>
-            <Text>Do you have account ? </Text>
-            <CustomButton
+            <Text className="text-center mt-5 text-lg" >Do you have account ? </Text>
+            <CustomButton onPress={() => {
+              router.replace("/(auth)/sign-up");
+            }}
               title="Sign up"
-              classname=" w-1/5 m-auto  mt-8 bg-button-color "
-              textStyle="text-white text-center w-full  font-LeagueSpartanBold text-[14px]"
+              classname=" w-1/5 m-auto p-2 mt-4 bg-button-color "
+              textStyle="text-white text-center w-full  font-LeagueSpartanBold text-[16px]"
             ></CustomButton>
           </View>
         </View>
       </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

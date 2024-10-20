@@ -12,12 +12,12 @@ const index = () => {
         <View className="flex items-end px-5 py-5 ">
           <TouchableOpacity
             onPress={() => {
-              router.replace("/(root)/(tabs)/home");
+              router.push("/(root)/(tabs)/home");
             }}
           >
             <Text className="text-white text-xl bg-black px-3 py-1 rounded-xl font-LeagueSpartanRegular">
-              {" "}
-              SKIP{" "}
+              
+              SKIP
             </Text>
           </TouchableOpacity>
         </View>
@@ -36,7 +36,7 @@ const index = () => {
               ease
             </Text>
             <CustomButton onPress={() => {
-                router.replace("/(auth)/sign-in") }
+                router.push("/(auth)/sign-in") }
             }
               IconRight={() => (
                 <Image

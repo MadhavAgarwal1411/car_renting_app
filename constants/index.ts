@@ -29,8 +29,7 @@ import exitIcon from "@/assets/images/exit.png";
 import tripCar from "@/assets/images/tripcar1.png";
 import messageIcon from "@/assets/images/message.png";
 import callIcon from "@/assets/images/call.png";
-import plusIcon from "@/assets/images/plus sign.png"
-
+import plusIcon from "@/assets/images/plus sign.png";
 
 export const Images = {
   heroImage,
@@ -47,7 +46,6 @@ export const Images = {
   profilepicture,
   tripCar,
 };
-
 
 export const Icons = {
   angleIcon,
@@ -68,7 +66,7 @@ export const Icons = {
   exitIcon,
   messageIcon,
   callIcon,
-  plusIcon
+  plusIcon,
 };
 
 export const onboarding = [
@@ -120,55 +118,52 @@ export const carDetails = [
   },
 ];
 export const carData = [
-    {
-        tripId: 1,
-        carName: "Hyundai Creta petrol 2018",
-        tripStartDate: "23-oct-2024", 
-        tripEndDate: "27-oct-2024",
-       tripStartTime: "10:00 AM",
-       tripEndTime: "5:00 PM",
-        tripOrigin: "New Delhi",
-        tripDestination : "Agra",
-        tripStatus: "Upcoming",
-        tripCall: Icons.callIcon,
-        tripMessage:  Icons.messageIcon,
-        carImage: Images.tripCar,
-        
-    } ,
-    {
-        tripId: 2,
-        carName: "Hyundai Creta petrol 2018",
-        tripStartDate: "23-oct-2024", 
-        tripEndDate: "27-oct-2024",
-       tripStartTime: "10:00 AM",
-       tripEndTime: "5:00 PM",
-        
-        tripOrigin: "New Delhi",
-        tripDestination : "Jaipur",
-        tripStatus: "Completed",
-        
-       
-    }  ,{
-        tripId: 3,
-        carName: "Hyundai Creta petrol 2018",
-        tripStartDate: "23-oct-2024", 
-        tripEndDate: "27-oct-2024",
-       tripStartTime: "10:00 AM",
-       tripEndTime: "5:00 PM",
-        tripOrigin: "New Delhi",
-        tripDestination : "Dehradun",
-        tripStatus: "Completed",
-       
-    },{
-        tripId: 4,
-        carName: "Hyundai Creta petrol 2018",
-        tripStartDate: "23-oct-2024", 
-        tripEndDate: "27-oct-2024",
-       tripStartTime: "10:00 AM",
-       tripEndTime: "5:00 PM",
-        tripOrigin: "New Delhi",
-        tripDestination : "Manali",
-        tripStatus: "Completed",
-      
-    }
-]
+  {
+    tripId: 1,
+    carName: "Hyundai Creta petrol 2018",
+    tripStartDate: "23-oct-2024",
+    tripEndDate: "27-oct-2024",
+    tripStartTime: "10:00 AM",
+    tripEndTime: "5:00 PM",
+    tripOrigin: "New Delhi",
+    tripDestination: "Agra",
+    tripStatus: "Upcoming",
+    tripCall: Icons.callIcon,
+    tripMessage: Icons.messageIcon,
+    carImage: Images.tripCar,
+  },
+  {
+    tripId: 2,
+    carName: "Hyundai Creta petrol 2018",
+    tripStartDate: "23-oct-2024",
+    tripEndDate: "27-oct-2024",
+    tripStartTime: "10:00 AM",
+    tripEndTime: "5:00 PM",
+
+    tripOrigin: "New Delhi",
+    tripDestination: "Jaipur",
+    tripStatus: "Completed",
+  },
+  {
+    tripId: 3,
+    carName: "Hyundai Creta petrol 2018",
+    tripStartDate: "23-oct-2024",
+    tripEndDate: "27-oct-2024",
+    tripStartTime: "10:00 AM",
+    tripEndTime: "5:00 PM",
+    tripOrigin: "New Delhi",
+    tripDestination: "Dehradun",
+    tripStatus: "Completed",
+  },
+  {
+    tripId: 4,
+    carName: "Hyundai Creta petrol 2018",
+    tripStartDate: "23-oct-2024",
+    tripEndDate: "27-oct-2024",
+    tripStartTime: "10:00 AM",
+    tripEndTime: "5:00 PM",
+    tripOrigin: "New Delhi",
+    tripDestination: "Manali",
+    tripStatus: "Completed",
+  },
+];

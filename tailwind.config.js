@@ -13,7 +13,6 @@ module.exports = {
         LeagueSpartanRegular:["LeagueSpartanRegular","sans serif"],
         LeagueSpartanSemiBold:["LeagueSpartanSemiBold","sans serif"],
         LeagueSpartanThin:["LeagueSpartanThin","sans serif"],
-
       },
       colors: {
         "button-color": "#1E1E1E",

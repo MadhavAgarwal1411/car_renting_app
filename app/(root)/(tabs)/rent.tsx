@@ -2,10 +2,8 @@ import CustomButton from "@/components/CustomButton";
 import { Icons } from "@/constants";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, Alert } from "react-native";
 import { useMutation, useQuery } from "@apollo/client";
-import * as ImagePicker from "expo-image-picker";
-
 import React, {
   JSXElementConstructor,
   Key,
@@ -15,54 +13,71 @@ import React, {
   useState,
 } from "react";
 import useUsers from "@/hooks/useUsers";
-import client from "@/hooks/useApolloClient";
 import UPLOAD_IMAGE_MUTATION from "@/db/mutations/uploadImage";
+import * as ImagePicker from "expo-image-picker";
+import AWS from "aws-sdk";
+
+AWS.config.update({
+  region: process.env.EXPO_PUBLIC_S3_REGION,
+  accessKeyId: process.env.EXPO_PUBLIC_S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.EXPO_PUBLIC_S3_BUCKET_NAME,
+});
+
+const s3 = new AWS.S3({
+  params: { Bucket: `${process.env.EXPO_PUBLIC_S3_BUCKET_NAME}` },
+});
 
 const rent: React.FC = () => {
-  const [imageUri, setImageUri] = useState<string | null>(null);
-  const [uploadStatus, setUploadStatus] = useState<string>("");
+  // const [imageUri, setImageUri] = useState<string>();
 
   const [uploadImageMutation] = useMutation(UPLOAD_IMAGE_MUTATION);
   const [image, setImage] = useState("");
 
-  async function pickImage() {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images, // here it is where we specify the allow format
-      allowsEditing: true,
-      aspect: [3, 4],
-      quality: 1,
-    });
+const pickImage = async () => {
+  const permissionResult =
+    await ImagePicker.requestMediaLibraryPermissionsAsync();
 
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
-      // to upload image see the next function
-      await uploadImage(imageUri, "image");
-    }
+  if (!permissionResult.granted) {
+    Alert.alert("Permission to access gallery is required!");
+    return;
   }
 
-  const uploadImage = async (uri: string | null, filetype: string) => {
-    if (!imageUri) return;
+  const result = await ImagePicker.launchImageLibraryAsync({
+    mediaTypes: ImagePicker.MediaTypeOptions.Images,
+    allowsEditing: true,
+    quality: 1,
+  });
+  console.log("haaha")
+  if (!result.canceled) {
+    let imageUri = result.assets[0].uri;
+    uploadImage(imageUri);
+  }
+};
 
-    const formData = new FormData();
-    formData.append("file", {
-      uri: uri,
-      name: "image.jpg", // You can dynamically name the file if needed
-      type: filetype, // Adjust based on the file type
-    });
+const uploadImage = async (uri: string) => {
+  if (!uri) return;
 
-    try {
-      const { data } = await uploadImageMutation({
-        variables: {
-          file: formData.get("file"),
-        },
-      });
-      setUploadStatus("Image uploaded successfully");
-      console.log("Image upload success", data);
-    } catch (error) {
-      setUploadStatus("Image upload failed");
-      console.error("Image upload failed", error);
-    }
+  const response = await fetch(uri);
+  const blob = await response.blob();
+  const filename = uri.split("/").pop();
+
+  const params = {
+    Key: `${filename}`,
+    Body: blob,
+    ContentType: "image/jpg",
+    Bucket: `${process.env.EXPO_PUBLIC_S3_BUCKET_NAME}`,
   };
+
+  s3.upload(params, (err: any, data: any) => {
+    if (err) {
+      console.log("Error uploading image:", err);
+      Alert.alert("Upload failed");
+    } else {
+      console.log("Image uploaded successfully:", data.Location);
+      Alert.alert("Image uploaded successfully!");
+    }
+  });
+};
 
   return (
     <SafeAreaView>

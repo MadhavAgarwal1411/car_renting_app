@@ -4,7 +4,7 @@ import { Redirect } from "expo-router";
 // import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
 
 const Home = () => {
-  const IsSignedIn = true;
+  const IsSignedIn = false;
 
   if (IsSignedIn) {
     return (

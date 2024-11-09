@@ -47,7 +47,6 @@ const pickImage = async () => {
     allowsEditing: true,
     quality: 1,
   });
-  console.log("haaha")
   if (!result.canceled) {
     let imageUri = result.assets[0].uri;
     uploadImage(imageUri);

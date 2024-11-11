@@ -8,18 +8,26 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import LOGIN_MUTATION from "@/db/mutations/loginUser.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState } from "react";
+import client from "@/hooks/useApolloClient";
+import { useUser } from "@/hooks/useUser";
 
 const signIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [login] = useMutation(LOGIN_MUTATION);
+  const { setUser } = useUser();
+
   const handleLogin = async () => {
     try {
       const { data } = await login({ variables: { loginUserEmail2: email,loginUserPassword2: password } });
       await AsyncStorage.setItem("accessToken", data.loginUser.accessToken);
       await AsyncStorage.setItem("refreshToken", data.loginUser.refreshToken);
+      setUser(data);
       Alert.alert("Sign-in successful");
+                  
+      router.replace("/");
+
      } catch (error: any) {
       Alert.alert(`Login error: ${error.message}`);
     }

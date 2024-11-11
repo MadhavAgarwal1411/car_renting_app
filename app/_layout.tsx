@@ -1,5 +1,6 @@
 // import client from "@/apolloClient";
 import client from "@/hooks/useApolloClient";
+import { AuthProvider } from "@/hooks/useUser";
 import { ApolloProvider } from "@apollo/client";
 import {
   DarkTheme,
@@ -41,12 +42,14 @@ export default function RootLayout() {
 
   return (
     <ApolloProvider client={client}>
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-        <Stack.Screen name="(root)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
+      <AuthProvider>
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+          <Stack.Screen name="(root)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+      </AuthProvider>
     </ApolloProvider>
   );
 }

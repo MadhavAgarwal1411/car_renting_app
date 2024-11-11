@@ -34,3 +34,13 @@ declare interface TripHistoryDetails {
   tripDuration: string;
   carImage?: React.ComponentType<any>;
 }
+declare interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+
+declare interface AuthContextProps {
+  user: User | undefined;
+  setUser: (user: User) => void;
+}

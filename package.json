@@ -19,6 +19,7 @@
     "@expo/vector-icons": "^14.0.2",
     "@react-native-async-storage/async-storage": "^2.0.0",
     "@react-navigation/native": "^6.0.2",
+    "apollo-link-retry": "^2.2.16",
     "aws-sdk": "^2.1691.0",
     "expo": "~51.0.28",
     "expo-constants": "~16.0.2",

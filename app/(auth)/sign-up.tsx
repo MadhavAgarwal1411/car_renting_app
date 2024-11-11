@@ -28,6 +28,7 @@ const signUp = () => {
       await AsyncStorage.setItem("accessToken", data.createUser.accessToken);
       await AsyncStorage.setItem("refreshToken", data.createUser.refreshToken);
       Alert.alert("Signed up successfully!");
+      router.replace("/(auth)/sign-in");
     } catch (error: any) {
       Alert.alert(`Signup error: ${error.message}`);
     }

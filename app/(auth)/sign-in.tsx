@@ -3,33 +3,45 @@ import InputField from "@/components/InputField";
 import { Icons } from "@/constants";
 import { useMutation } from "@apollo/client";
 import { router } from "expo-router";
-import { Alert, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LOGIN_MUTATION from "@/db/mutations/loginUser.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState } from "react";
-import client from "@/hooks/useApolloClient";
+// import client from "@/hooks/useApolloClient";
 import { useUser } from "@/hooks/useUser";
+import ShowAlert from "@/components/ShowAlert";
 
 const signIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [login] = useMutation(LOGIN_MUTATION);
-  const { setUser } = useUser();
+  const [login, { data, loading, error, reset }] = useMutation(LOGIN_MUTATION);
+  const { setUser, user } = useUser();
+
+
 
   const handleLogin = async () => {
     try {
-      const { data } = await login({ variables: { loginUserEmail2: email,loginUserPassword2: password } });
+      await login({
+        variables: { loginUserEmail2: email, loginUserPassword2: password },
+      });
+
       await AsyncStorage.setItem("accessToken", data.loginUser.accessToken);
       await AsyncStorage.setItem("refreshToken", data.loginUser.refreshToken);
       setUser(data);
       Alert.alert("Sign-in successful");
-                  
-      router.replace("/");
-
-     } catch (error: any) {
-      Alert.alert(`Login error: ${error.message}`);
+      router.replace("/(root)/home");
+    } catch (error: any) {
+      console.log(error.message);
     }
   };
   return (
@@ -77,12 +89,24 @@ const signIn = () => {
             />
           </View>
 
-          <CustomButton
-            title="Sign in"
-            classname="w-2/4 m-auto  mt-8 bg-button-color "
-            textStyle="text-white text-center w-full  font-LeagueSpartanBold text-xl"
-            onPress={handleLogin}
-          />
+          {loading ? (
+            <ActivityIndicator size = "large"/>
+          ) : (
+            <CustomButton
+              title="Sign in"
+              classname="w-2/4 m-auto  mt-8 bg-button-color "
+              textStyle="text-white text-center w-full  font-LeagueSpartanBold text-xl"
+              onPress={handleLogin}
+            />
+          )}
+          {error && (
+            <ShowAlert
+              message={error.message}
+              onDismiss={() => {
+                reset();
+              }}
+            />
+          )}
           <View className="w-3/4 m-auto h-[2px] rounded-full mt-7 bg-button-color"></View>
           <View>
             <Text className="text-center font-LeagueSpartanMedium text-base mt-5 mb-6 ">
@@ -104,7 +128,7 @@ const signIn = () => {
                 title="Sign up"
                 classname=" w-1/5 m-auto p-2 mt-4 bg-button-color "
                 textStyle="text-white text-center w-full  font-LeagueSpartanBold text-[16px]"
-              ></CustomButton>
+              />
             </View>
           </View>
         </View>

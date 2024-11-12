@@ -52,7 +52,7 @@ const errorLink = onError(({ graphQLErrors, operation, forward }) => {
 });
 
 const authLink = setContext(async (_, { headers }) => {
-  const token = await getAccessToken;
+  const token = getAccessToken;
   return {
     headers: {
       ...headers,

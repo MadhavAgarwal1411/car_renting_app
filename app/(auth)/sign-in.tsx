@@ -15,7 +15,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import LOGIN_MUTATION from "@/db/mutations/loginUser.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import client from "@/hooks/useApolloClient";
 import { useUser } from "@/hooks/useUser";
 import ShowAlert from "@/components/ShowAlert";
@@ -27,23 +27,31 @@ const signIn = () => {
   const [login, { data, loading, error, reset }] = useMutation(LOGIN_MUTATION);
   const { setUser, user } = useUser();
 
-
-
   const handleLogin = async () => {
     try {
       await login({
         variables: { loginUserEmail2: email, loginUserPassword2: password },
+      }).then((res) => {
+        console.log(res);
+        if (res.data?.loginUser?.accessToken) {
+          AsyncStorage.setItem("accessToken", res.data.loginUser.accessToken);
+          AsyncStorage.setItem("refreshToken", res.data.loginUser.refreshToken);
+          setUser(data);
+          Alert.alert("Sign-in successful");
+          router.replace("/(root)/home");
+        }
       });
-
-      await AsyncStorage.setItem("accessToken", data.loginUser.accessToken);
-      await AsyncStorage.setItem("refreshToken", data.loginUser.refreshToken);
-      setUser(data);
-      Alert.alert("Sign-in successful");
-      router.replace("/(root)/home");
     } catch (error: any) {
       console.log(error.message);
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      console.log({ user });
+    }
+  }, [data]);
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -90,7 +98,7 @@ const signIn = () => {
           </View>
 
           {loading ? (
-            <ActivityIndicator size = "large"/>
+            <ActivityIndicator size="large" />
           ) : (
             <CustomButton
               title="Sign in"

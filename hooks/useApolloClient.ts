@@ -24,7 +24,7 @@ const retryLink = new RetryLink({
     jitter: true,
   },
   attempts: {
-    max: 5,
+    max: 2,
     retryIf: (error, _operation) => {
       return !!error && (error.statusCode === 503 || !!error.networkError);
     },
@@ -58,7 +58,7 @@ const errorLink = onError(({ graphQLErrors, operation, forward }) => {
 
 const authLink = setContext(async (_, { headers }) => {
   const token = await AsyncStorage.getItem("accessToken");
-  console.log(token)
+  // console.log(token)
   return {
     headers: {
       ...headers,
@@ -72,7 +72,7 @@ async function refreshAccessToken(): Promise<string> {
     cache: new InMemoryCache(),
   });
   const refreshToken = await AsyncStorage.getItem("refreshToken")
-  console.log(refreshToken)
+  // console.log(refreshToken)
   const { data } = await client.mutate({
     mutation: GET_ACCESS_TOKEN,
     variables: {

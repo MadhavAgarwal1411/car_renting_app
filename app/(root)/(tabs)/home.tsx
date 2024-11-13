@@ -1,18 +1,16 @@
 import CustomButton from "@/components/shared/CustomButton";
 import Slideshow from "@/components/SlideShow";
-
 import { carDetails, Icons, Images } from "@/constants";
+import { useUser } from "@/hooks/useUser";
 import {
   ScrollView,
   Text,
   View,
   Image,
-  StyleSheet,
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
-  TouchableOpacity,
   FlatList,
   TextInput,
 } from "react-native";
@@ -20,7 +18,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const DATA = [
   { logo: Images.hyundaiLogo },
-
   { logo: Images.mahindraLogo },
   { logo: Images.suzukiLogo },
   { logo: Images.toyotaLogo },
@@ -36,6 +33,8 @@ const DATA = [
 //   ]
 
 const home = () => {
+  const {user} = useUser();
+
   return (
     <SafeAreaView className="bg-screen-color">
       <ScrollView>
@@ -43,15 +42,14 @@ const home = () => {
           <View>
             <View className="flex flex-row justify-between w-3/4 m-auto mt-14">
               <View className="flex justify-center ">
-                <Text className="font-LeagueSpartanRegular text-4xl">
-                  Hello Ashley 👋
-                </Text>
+                  <Text className="font-LeagueSpartanRegular text-4xl">
+                    Hello {user?.name} 👋
+                  </Text>
 
                 <Text className="font-LeagueSpartanRegular text-lg">
                   Explore our services
                 </Text>
               </View>
-              <Image source={Images.ashleyImage} />
             </View>
             <View>
               <KeyboardAvoidingView
@@ -60,8 +58,10 @@ const home = () => {
                 <View className="flex flex-row py-8 mx-10 pr-4">
                   <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View className="bg-placeholder-color rounded-2xl  py-2 px-6  flex flex-row justify-between w-3/4 m-auto">
-                      <TextInput className="font-LeagueSpartanRegular text-lg " placeholder="Search cars">
-                      </TextInput>
+                      <TextInput
+                        className="font-LeagueSpartanRegular text-lg "
+                        placeholder="Search cars"
+                      ></TextInput>
                     </View>
                   </TouchableWithoutFeedback>
                   <CustomButton

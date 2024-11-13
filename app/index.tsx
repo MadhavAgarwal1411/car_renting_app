@@ -17,7 +17,7 @@ const Home =  () => {
       try {
         const accessToken = await AsyncStorage.getItem("accessToken");
         setToken(accessToken);
-        //  await AsyncStorage.removeItem("accessToken");
+         await AsyncStorage.removeItem("accessToken");
       } catch (error) {
         console.error("Error fetching token:", error);
       } finally {

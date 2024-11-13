@@ -13,7 +13,6 @@ const SignInForm = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [message, setMessage] = useState<string>("")
-  const { setUser } = useUser();
 
   const [login, { data, loading, error, reset }] = useMutation(LOGIN_MUTATION);
 
@@ -27,7 +26,12 @@ const SignInForm = () => {
         if (res.data?.loginUser?.accessToken) {
           AsyncStorage.setItem("accessToken", res.data.loginUser.accessToken);
           AsyncStorage.setItem("refreshToken", res.data.loginUser.refreshToken);
-          setUser(data);
+          AsyncStorage.setItem("name", res.data.loginUser.user.name);
+          AsyncStorage.setItem("email", res.data.loginUser.user.email);
+          AsyncStorage.setItem("phone", res.data.loginUser.user.phone);
+          AsyncStorage.setItem("type", res.data.loginUser.user.__typename);
+          AsyncStorage.setItem("user_id", res.data.loginUser.user.id);
+          // console.log(res.data.loginUser.user);
           Alert.alert("Sign-in successful");
           router.replace("/(root)/home");
         }

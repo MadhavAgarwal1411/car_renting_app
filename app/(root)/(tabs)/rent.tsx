@@ -1,4 +1,4 @@
-import CustomButton from "@/components/CustomButton";
+import CustomButton from "@/components/shared/CustomButton";
 import { Icons } from "@/constants";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -16,6 +16,7 @@ import useUsers from "@/hooks/useUsers";
 import UPLOAD_IMAGE_MUTATION from "@/db/mutations/uploadImage";
 import * as ImagePicker from "expo-image-picker";
 import AWS from "aws-sdk";
+import GET_CARS from "@/db/queries/useCars";
 
 AWS.config.update({
   region: process.env.EXPO_PUBLIC_S3_REGION,
@@ -33,50 +34,50 @@ const rent: React.FC = () => {
   const [uploadImageMutation] = useMutation(UPLOAD_IMAGE_MUTATION);
   const [image, setImage] = useState("");
 
-const pickImage = async () => {
-  const permissionResult =
-    await ImagePicker.requestMediaLibraryPermissionsAsync();
+  const pickImage = async () => {
+    const permissionResult =
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
 
-  if (!permissionResult.granted) {
-    Alert.alert("Permission to access gallery is required!");
-    return;
-  }
+    if (!permissionResult.granted) {
+      Alert.alert("Permission to access gallery is required!");
+      return;
+    }
 
-  const result = await ImagePicker.launchImageLibraryAsync({
-    mediaTypes: ImagePicker.MediaTypeOptions.Images,
-    allowsEditing: true,
-    quality: 1,
-  });
-  if (!result.canceled) {
-    let imageUri = result.assets[0].uri;
-    uploadImage(imageUri);
-  }
-};
-
-const uploadImage = async (uri: string) => {
-  if (!uri) return;
-
-  const response = await fetch(uri);
-  const blob = await response.blob();
-  const filename = uri.split("/").pop();
-
-  const params = {
-    Key: `${filename}`,
-    Body: blob,
-    ContentType: "image/jpg",
-    Bucket: `${process.env.EXPO_PUBLIC_S3_BUCKET_NAME}`,
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      quality: 1,
+    });
+    if (!result.canceled) {
+      let imageUri = result.assets[0].uri;
+      uploadImage(imageUri);
+    }
   };
 
-  s3.upload(params, (err: any, data: any) => {
-    if (err) {
-      console.log("Error uploading image:", err);
-      Alert.alert("Upload failed");
-    } else {
-      console.log("Image uploaded successfully:", data.Location);
-      Alert.alert("Image uploaded successfully!");
-    }
-  });
-};
+  const uploadImage = async (uri: string) => {
+    if (!uri) return;
+
+    const response = await fetch(uri);
+    const blob = await response.blob();
+    const filename = uri.split("/").pop();
+
+    const params = {
+      Key: `${filename}`,
+      Body: blob,
+      ContentType: "image/jpg",
+      Bucket: `${process.env.EXPO_PUBLIC_S3_BUCKET_NAME}`,
+    };
+
+    s3.upload(params, (err: any, data: any) => {
+      if (err) {
+        console.log("Error uploading image:", err);
+        Alert.alert("Upload failed");
+      } else {
+        console.log("Image uploaded successfully:", data.Location);
+        Alert.alert("Image uploaded successfully!");
+      }
+    });
+  };
 
   return (
     <SafeAreaView>
@@ -128,32 +129,32 @@ const uploadImage = async (uri: string) => {
     </SafeAreaView>
   );
 
-  // const { loading, error, data } = useQuery(useUsers);
+  //   const { loading, error, data } = useQuery(GET_CARS);
 
-  // if (loading) return <ActivityIndicator />;
-  // if (error) return <Text>Error: {error.message}</Text>;
+  //   if (loading) return <ActivityIndicator />;
+  //   if (error) return <Text>Error: {error.message}</Text>;
 
-  // return (
-  //   <View>
-  //     {data.users.map((user) => (
-  //       <View
-  //         key={user.id}
-  //         style={{
-  //           width: "90%",
-  //           alignSelf: "center",
-  //           padding: 10,
-  //           backgroundColor: "white",
-  //           elevation: 5,
-  //           marginTop: 10,
-  //         }}
-  //       >
-  //         <Text>Name: {user.name}</Text>
-  //         <Text>Email: {user.email}</Text>
-  //         <Text>Age: {user.age}</Text>
-  //       </View>
-  //     ))}
-  //   </View>
-  // );
+  //   return (
+  //     <View>
+  //       {data.cars.map((car) => (
+  //         <View
+  //           key={car.id}
+  //           style={{
+  //             width: "90%",
+  //             alignSelf: "center",
+  //             padding: 10,
+  //             backgroundColor: "white",
+  //             elevation: 5,
+  //             marginTop: 10,
+  //           }}
+  //         >
+  //           <Text>Name: {car.brand}</Text>
+  //           <Text>Email: {car.model}</Text>
+  //           <Text>Age: {car.price}</Text>
+  //         </View>
+  //       ))}
+  //     </View>
+  //   );
 };
 
 export default rent;

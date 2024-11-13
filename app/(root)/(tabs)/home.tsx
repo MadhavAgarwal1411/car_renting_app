@@ -1,4 +1,4 @@
-import CustomButton from "@/components/CustomButton";
+import CustomButton from "@/components/shared/CustomButton";
 import Slideshow from "@/components/SlideShow";
 
 import { carDetails, Icons, Images } from "@/constants";
@@ -14,6 +14,7 @@ import {
   Keyboard,
   TouchableOpacity,
   FlatList,
+  TextInput,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -59,9 +60,8 @@ const home = () => {
                 <View className="flex flex-row py-8 mx-10 pr-4">
                   <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View className="bg-placeholder-color rounded-2xl  py-2 px-6  flex flex-row justify-between w-3/4 m-auto">
-                      <Text className="font-LeagueSpartanRegular text-lg ">
-                        Search Cars
-                      </Text>
+                      <TextInput className="font-LeagueSpartanRegular text-lg " placeholder="Search cars">
+                      </TextInput>
                     </View>
                   </TouchableWithoutFeedback>
                   <CustomButton
@@ -123,17 +123,14 @@ const home = () => {
                       className="w-[130px]"
                     />
                     <Text className="font-LeagueSpartanRegular text-xl">
-                      {" "}
-                      {item.title}{" "}
+                      {item.title}
                     </Text>
                     <View className="flex flex-row gap-5">
                       <Text className="font-LeagueSpartanRegular text-sm">
-                        {" "}
-                        {item.price}{" "}
+                        {item.price}
                       </Text>
                       <Text className="font-LeagueSpartanRegular text-sm">
-                        {" "}
-                        {item.ratings}{" "}
+                        {item.ratings}
                       </Text>
                     </View>
                     <CustomButton

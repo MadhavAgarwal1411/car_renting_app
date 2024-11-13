@@ -1,4 +1,4 @@
-import InputField from "@/components/InputField";
+import InputField from "@/components/shared/InputField";
 import { Icons, Images } from "@/constants";
 import { Image, ScrollView, Text, View } from "react-native";
 import { FlatList } from "react-native";

@@ -1,5 +1,4 @@
 import { useUser } from "@/hooks/useUser";
-import { getAccessToken } from "@/store";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Redirect } from "expo-router";
 import { useEffect, useState } from "react";

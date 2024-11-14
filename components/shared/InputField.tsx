@@ -21,6 +21,8 @@ const InputField = ({
   inputModeType,
   className,
   editable = false,
+  maxLabelSizeMultiplier=1.3,
+  maxInputSizeMultiplier=1.3,
   ...props
 }: InputFieldProps) => {
   const [isEditable, setEditable] = useState(editable);
@@ -31,7 +33,7 @@ const InputField = ({
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View>
-          <Text className={`${labelStyle}`}>{label}</Text>
+          <Text className={`${labelStyle}`} maxFontSizeMultiplier={maxLabelSizeMultiplier}>{label}</Text>
           <View
             className={`bg-placeholder-color   flex flex-row justify-between  m-auto w-3/4 ${containerStyle} `}
           >
@@ -39,6 +41,7 @@ const InputField = ({
               editable={isEditable}
               className={`${inputStyle} w-full`}
               {...props}
+              maxFontSizeMultiplier={maxInputSizeMultiplier}
             />
             <TouchableOpacity
               onPress={() => {

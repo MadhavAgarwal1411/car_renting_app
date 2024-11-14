@@ -1,11 +1,12 @@
 import CustomButton from "@/components/shared/CustomButton";
 import { Icons } from "@/constants";
 import { router } from "expo-router";
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // import { useState } from "react";
 import SignInForm from "@/components/SignInForm";
+import CustomText from "@/components/shared/CustomText";
 // import client from "@/hooks/useApolloClient";
 
 const signIn = () => {
@@ -24,30 +25,34 @@ const signIn = () => {
           </TouchableOpacity>
 
           <View className="flex justify-center items-center  ">
-            <Text className="font-LeagueSpartanRegular text-3xl mt-10">
-              Welcome back!
-            </Text>
-            <Text className="m-3 text-center font-LeagueSpartanRegular text-base mt-5 ">
-              Sign in to access your account, manage bookings, and enjoy a
-              smooth car rental experience.
-            </Text>
+            <CustomText
+              className="font-LeagueSpartanRegular text-3xl mt-10"
+              text="Welcome back!"
+            />
+            <CustomText
+              className="m-3 text-center font-LeagueSpartanRegular text-base mt-5 "
+              text="Sign in to access your account, manage bookings, and enjoy a
+              smooth car rental experience."
+            />
           </View>
           <SignInForm />
 
           <View className="w-3/4 m-auto h-[2px] rounded-full mt-7 bg-button-color"></View>
           <View>
-            <Text className="text-center font-LeagueSpartanMedium text-base mt-5 mb-6 ">
-              Or Sign in with
-            </Text>
+            <CustomText
+              className="text-center font-LeagueSpartanMedium text-base mt-5 mb-6 "
+              text="Or Sign in with"
+            />
             <View className="flex flex-row justify-center items-center  gap-7">
               <Image source={Icons.facebookIcon} />
               <Image source={Icons.googleIcon} />
               <Image source={Icons.appleIcon} />
             </View>
             <View>
-              <Text className="text-center mt-5 text-lg">
-                Do you have account ?{" "}
-              </Text>
+              <CustomText
+                className="text-center mt-5 text-lg"
+                text="Do you have account ?"
+              />
               <CustomButton
                 onPress={() => {
                   router.push("/(auth)/sign-up");

@@ -1,4 +1,5 @@
 import CustomButton from "@/components/shared/CustomButton";
+import CustomText from "@/components/shared/CustomText";
 import { Images, Icons } from "@/constants";
 import { router } from "expo-router";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
@@ -15,9 +16,11 @@ const index = () => {
                 router.push("/(root)/(tabs)/home");
               }}
             >
-              <Text className="text-white text-xl bg-black px-3 py-1 rounded-xl font-LeagueSpartanRegular">
-                SKIP
-              </Text>
+              <CustomText
+                className="text-white text-xl bg-black px-3 py-1 rounded-xl font-LeagueSpartanRegular"
+                maxFontSizeMultiplier={1.5}
+                text="SKIP"
+              />
             </TouchableOpacity>
           </View>
           <View>
@@ -26,18 +29,23 @@ const index = () => {
               className=" w-[100%] h-[35%] mt-14 "
             />
             <View className="">
-              <Text className="text-white text-[40px] pt-3 px-5 font-LeagueSpartanBold">
-                Discover the perfect rental car for your journey!
-              </Text>
-              <Text className="text-zinc-200 text-base pt-3 px-5 font-LeagueSpartanRegular">
-                Your all-in-one solution for hassle-free, affordable, and
+              <CustomText
+                className="text-white text-[40px] pt-3 px-5 font-LeagueSpartanBold"
+                maxFontSizeMultiplier={1}
+                text="Discover the perfect rental car for your journey!"
+              />
+              <CustomText
+                className="text-zinc-200 text-base pt-3 px-5 font-LeagueSpartanRegular"
+                maxFontSizeMultiplier={1.1}
+                text="Your all-in-one solution for hassle-free, affordable, and
                 convenient car rentals. Explore, reserve, and hit the road with
-                ease
-              </Text>
+                ease"
+              />
               <CustomButton
                 onPress={() => {
                   router.push("/(auth)/sign-in");
                 }}
+                maxFontSizeMultiplier={1}
                 IconRight={() => (
                   <Image
                     resizeMode="contain"

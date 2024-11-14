@@ -8,6 +8,7 @@ import { useMutation } from "@apollo/client";
 import { router } from "expo-router";
 import { useState } from "react";
 import { ActivityIndicator, Alert, Text, View } from "react-native";
+import CustomText from "./shared/CustomText";
 
 const SignUpForm = () => {
   const [email, setEmail] = useState("");
@@ -65,7 +66,7 @@ const SignUpForm = () => {
           onChangeText={setEmail}
           autoComplete="email"
           keyboardType="email-address"
-        //   defaultValue="@gmail.com"
+          //   defaultValue="@gmail.com"
         />
         <InputField
           label="Password"
@@ -104,7 +105,10 @@ const SignUpForm = () => {
           onPress={handleSignup}
         />
       )}
-      <Text className="text-center text-red-600 mt-2">{message}</Text>
+      <CustomText
+        className="text-center text-red-600 mt-2"
+        text={`${message}`}
+      />
 
       {error && (
         <ShowAlert

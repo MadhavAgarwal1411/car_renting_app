@@ -1,11 +1,12 @@
 import CustomButton from "@/components/shared/CustomButton";
 import { Icons } from "@/constants";
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Alert } from "react-native";
 import React from "react";
 import * as ImagePicker from "expo-image-picker";
 import AWS from "aws-sdk";
+import CustomText from "@/components/shared/CustomText";
 // import UPLOAD_IMAGE_MUTATION from "@/db/mutations/uploadImage";
 // import { useMutation } from "@apollo/client";
 
@@ -73,12 +74,14 @@ const rent: React.FC = () => {
     <SafeAreaView>
       <ScrollView>
         <View className="w-4/5 m-auto mb-40">
-          <Text className="font-LeagueSpartanRegular text-3xl mt-7 text-center">
-            Add your rental car and earn like second salary
-          </Text>
-          <Text className="mt-5 font-LeagueSpartanRegular text-lg">
-            Upload your car picture
-          </Text>
+          <CustomText
+            className="font-LeagueSpartanRegular text-3xl mt-7 text-center"
+            text="Add your rental car and earn like second salary"
+          />
+          <CustomText
+            className="mt-5 font-LeagueSpartanRegular text-lg"
+            text="Upload your car picture"
+          />
           <View className="flex justify-evenly flex-row bg-placeholder-color mt-3 items-center py-10 rounded-xl ">
             <TouchableOpacity onPress={pickImage} className=" ">
               <Image source={Icons.plusIcon} className="" />
@@ -87,9 +90,10 @@ const rent: React.FC = () => {
               <Image source={Icons.plusIcon} />
             </TouchableOpacity>
           </View>
-          <Text className="mt-5 font-LeagueSpartanRegular text-lg">
-            Upload your car picture
-          </Text>
+          <CustomText
+            className="mt-5 font-LeagueSpartanRegular text-lg"
+            text="Upload your car picture"
+          />
           <View className="flex justify-evenly flex-row bg-placeholder-color mt-3 items-center py-10 rounded-xl ">
             <TouchableOpacity onPress={pickImage} className=" ">
               <Image source={Icons.plusIcon} className="" />
@@ -98,9 +102,11 @@ const rent: React.FC = () => {
               <Image source={Icons.plusIcon} />
             </TouchableOpacity>
           </View>
-          <Text className="mt-5 font-LeagueSpartanRegular text-lg">
-            Upload your car picture
-          </Text>
+          <CustomText
+            className="mt-5 font-LeagueSpartanRegular text-lg"
+            text="Upload your car picture"
+          />
+
           <View className="flex justify-evenly flex-row bg-placeholder-color mt-3 items-center py-10 rounded-xl ">
             <TouchableOpacity onPress={pickImage} className=" ">
               <Image source={Icons.plusIcon} className="" />

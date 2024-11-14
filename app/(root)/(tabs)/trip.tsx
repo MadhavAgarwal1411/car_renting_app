@@ -1,3 +1,4 @@
+import CustomText from "@/components/shared/CustomText";
 import { carData } from "@/constants";
 import { Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -9,9 +10,8 @@ const trip = () => {
     <SafeAreaView>
       <ScrollView>
         <View className="w-[85%] m-auto mb-44 ">
-          <Text className="font-LeagueSpartanBold text-4xl mt-6 mb-4">
-            Trip History
-          </Text>
+          <CustomText className="font-LeagueSpartanBold text-4xl mt-6 mb-4" text="Trip History" />
+            
           <View className="">
             {data.map((tripData, index) => (
               <View
@@ -25,26 +25,27 @@ const trip = () => {
                     source={tripData.carImage}
                   />
                 )}
-                <Text className="font-LeagueSpartanRegular text-xl mt-2">
-                  {tripData.carName}
-                </Text>
+                <CustomText
+                  className="font-LeagueSpartanRegular text-xl mt-2"
+                  text={`${tripData.carName}`}
+                />
 
-                <Text className=" bg-button-color w-1/3  rounded-lg text-center font-LeagueSpartanRegular text-xl mt-3 pt-1 pb-2  text-white">
-                  {tripData.tripStatus}
-                </Text>
+                <CustomText
+                  className=" bg-button-color w-1/3  rounded-lg text-center font-LeagueSpartanRegular text-xl mt-3 pt-1 pb-2  text-white"
+                  text={`${tripData.tripStatus}`}
+                />
 
-                <Text
+                <CustomText
                   numberOfLines={1}
                   adjustsFontSizeToFit
                   className="font-LeagueSpartanRegular text-lg mt-2"
-                >
-                  {tripData.tripStartDate} {tripData.tripStartTime} ➜{" "}
-                  {tripData.tripEndDate} {tripData.tripEndTime}
-                </Text>
+                  text={`${tripData.tripStartDate} ${tripData.tripStartTime} ➜ ${tripData.tripEndDate} ${tripData.tripEndTime}`}
+                />
 
-                <Text className="font-LeagueSpartanRegular text-lg mt-2">
-                  {tripData.tripOrigin} ➜ {tripData.tripDestination}
-                </Text>
+                <CustomText
+                  className="font-LeagueSpartanRegular text-lg mt-2"
+                  text={`${tripData.tripOrigin} ➜ ${tripData.tripDestination}`}
+                />
                 {tripData.tripCall && (
                   <View className=" flex flex-row gap-3 mt-1">
                     <Image source={tripData.tripCall} />

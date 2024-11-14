@@ -1,4 +1,5 @@
 import CustomButton from "@/components/shared/CustomButton";
+import CustomText from "@/components/shared/CustomText";
 import Slideshow from "@/components/SlideShow";
 import { carDetails, Icons, Images } from "@/constants";
 import { useUser } from "@/hooks/useUser";
@@ -42,13 +43,14 @@ const home = () => {
           <View>
             <View className="flex flex-row justify-between w-3/4 m-auto mt-14">
               <View className="flex justify-center ">
-                  <Text className="font-LeagueSpartanRegular text-4xl">
-                    Hello {user?.name} 👋
-                  </Text>
-
-                <Text className="font-LeagueSpartanRegular text-lg">
-                  Explore our services
-                </Text>
+                <CustomText
+                  className="font-LeagueSpartanRegular text-4xl"
+                  text={`Hello ${user?.name} 👋`}
+                />
+                <CustomText
+                  className="font-LeagueSpartanRegular text-lg"
+                  text="Explore our services"
+                />
               </View>
             </View>
             <View>
@@ -81,10 +83,14 @@ const home = () => {
           </View>
           <View>
             <View className="flex flex-row justify-between px-7">
-              <Text className="font-LeagueSpartanMedium text-lg">
-                Top Brands
-              </Text>
-              <Text className="font-LeagueSpartanMedium text-lg">See all</Text>
+              <CustomText
+                className="font-LeagueSpartanMedium text-lg"
+                text="Top Brands"
+              />
+              <CustomText
+                className="font-LeagueSpartanMedium text-lg"
+                text="See all"
+              />
             </View>
             <FlatList
               showsHorizontalScrollIndicator={false}
@@ -105,10 +111,15 @@ const home = () => {
           </View>
           <View className="mb-[100px] mt-5">
             <View className="flex flex-row justify-between px-7">
-              <Text className="font-LeagueSpartanMedium text-lg">
-                Best Cars
-              </Text>
-              <Text className="font-LeagueSpartanMedium text-lg">See all</Text>
+              <CustomText
+                className="font-LeagueSpartanMedium text-lg"
+                text="Best Cars"
+              />
+
+              <CustomText
+                className="font-LeagueSpartanMedium text-lg"
+                text="See all"
+              />
             </View>
             <FlatList
               showsHorizontalScrollIndicator={false}
@@ -122,16 +133,20 @@ const home = () => {
                       resizeMode="contain"
                       className="w-[130px]"
                     />
-                    <Text className="font-LeagueSpartanRegular text-xl">
-                      {item.title}
-                    </Text>
+                    <CustomText
+                      className="font-LeagueSpartanRegular text-xl"
+                      text={`${item.title}`}
+                    />
+
                     <View className="flex flex-row gap-5">
-                      <Text className="font-LeagueSpartanRegular text-sm">
-                        {item.price}
-                      </Text>
-                      <Text className="font-LeagueSpartanRegular text-sm">
-                        {item.ratings}
-                      </Text>
+                      <CustomText
+                        className="font-LeagueSpartanRegular text-sm"
+                        text={`${item.price}`}
+                      />
+                      <CustomText
+                        className="font-LeagueSpartanRegular text-sm"
+                        text={`${item.ratings}`}
+                      />
                     </View>
                     <CustomButton
                       title="BOOK NOW"

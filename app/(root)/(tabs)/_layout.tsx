@@ -42,6 +42,8 @@ export default function RootLayout() {
         tabBarHideOnKeyboard: true,
         tabBarActiveBackgroundColor: "white",
         tabBarInactiveBackgroundColor: "red",
+        // tabBarAllowFontScaling: false,
+
         tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "white",
         tabBarShowLabel: false,
@@ -59,6 +61,7 @@ export default function RootLayout() {
           overflow: "hidden",
           height: 66,
           paddingRight: 20,
+          paddingBottom: 10,
         },
       }}
     >
@@ -71,9 +74,17 @@ export default function RootLayout() {
           ),
           headerShown: false,
           tabBarBadge: "home",
-          tabBarLabelStyle: { color: "white" },
-          tabBarBadgeStyle: { color: "white", backgroundColor: "black" },
-          lazy: true,
+          tabBarAllowFontScaling: false,
+          tabBarBadgeStyle: {
+            color: "white",
+            backgroundColor: "black",
+            // fontSize: 8,
+            // marginBottom: 20,
+            // lineHeight: 40,
+            // textAlign: "justify",
+            paddingVertical: 2,
+            textAlignVertical: "center",
+          },
         }}
       />
       <Tabs.Screen
@@ -84,6 +95,8 @@ export default function RootLayout() {
             <TabIcon focused={focused} source={Icons.tripIcon} />
           ),
           headerShown: false,
+          tabBarAllowFontScaling: false,
+
           tabBarBadge: "trip",
           tabBarLabelStyle: { color: "white" },
           tabBarBadgeStyle: { color: "white", backgroundColor: "black" },
@@ -96,6 +109,8 @@ export default function RootLayout() {
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} source={Icons.rentIcon} />
           ),
+          tabBarAllowFontScaling: false,
+
           headerShown: false,
           tabBarBadge: "rent",
           tabBarLabelStyle: { color: "white" },
@@ -110,6 +125,8 @@ export default function RootLayout() {
             <TabIcon focused={focused} source={Icons.profileIcon} />
           ),
           headerShown: false,
+          tabBarAllowFontScaling: false,
+
           tabBarBadge: "profile",
           tabBarLabelStyle: { color: "white" },
           tabBarBadgeStyle: { color: "white", backgroundColor: "black" },

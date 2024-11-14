@@ -1,3 +1,4 @@
+import CustomText from "@/components/shared/CustomText";
 import InputField from "@/components/shared/InputField";
 import { Icons, Images } from "@/constants";
 import { Image, ScrollView, Text, View } from "react-native";
@@ -71,9 +72,11 @@ const profile = () => {
           <View className=" w-3/4 m-auto">
             <View className="flex bg-button-color flex-row py-6 px-4 rounded-3xl mb-4">
               <Image source={Icons.paperIcon} className="  " />
-              <Text className="text-2xl font-LeagueSpartanRegular text-center pl-5 text-white">
-                Policies
-              </Text>
+              <CustomText
+                className="text-2xl font-LeagueSpartanRegular text-center pl-5 text-white"
+                text="Policies"
+              />
+
               <Image
                 resizeMode="contain"
                 source={Icons.angleIcon}
@@ -84,9 +87,11 @@ const profile = () => {
           <View className=" w-3/4 m-auto">
             <View className="flex bg-button-color flex-row py-6 px-4 rounded-3xl mb-4">
               <Image source={Icons.helpIcon} className="  " />
-              <Text className="text-2xl font-LeagueSpartanRegular text-center pl-5 text-white">
-                Help & Support
-              </Text>
+              <CustomText
+                className="text-2xl font-LeagueSpartanRegular text-center pl-5 text-white"
+                text="Help & Support"
+              />
+
               <Image
                 resizeMode="contain"
                 source={Icons.angleIcon}
@@ -97,9 +102,11 @@ const profile = () => {
           <View className=" w-3/4 m-auto">
             <View className="flex bg-button-color flex-row py-6 px-4 rounded-3xl mb-4">
               <Image source={Icons.rateIcon} className="  " />
-              <Text className="text-2xl font-LeagueSpartanRegular text-center pl-5 text-white">
-                Rate us
-              </Text>
+              <CustomText
+                className="text-2xl font-LeagueSpartanRegular text-center pl-5 text-white"
+                text="Rate us"
+              />
+
               <Image
                 resizeMode="contain"
                 source={Icons.angleIcon}
@@ -110,9 +117,11 @@ const profile = () => {
           <View className=" w-3/4 m-auto">
             <View className="flex bg-button-color flex-row py-6 px-4 rounded-3xl mb-4">
               <Image source={Icons.settingIcon} className="  " />
-              <Text className="text-2xl font-LeagueSpartanRegular text-center pl-5 text-white">
-                Account setting
-              </Text>
+              <CustomText
+                className="text-2xl font-LeagueSpartanRegular text-center pl-5 text-white"
+                text="Account setting"
+              />
+
               <Image
                 resizeMode="contain"
                 source={Icons.angleIcon}
@@ -123,9 +132,11 @@ const profile = () => {
           <View className=" w-3/4 m-auto">
             <View className="flex bg-button-color flex-row py-6 px-4 rounded-3xl mb-4">
               <Image source={Icons.logOutIcon} className="  " />
-              <Text className="text-2xl font-LeagueSpartanRegular text-center pl-5 text-white">
-                Log out
-              </Text>
+              <CustomText
+                className="text-2xl font-LeagueSpartanRegular text-center pl-5 text-white"
+                text="Log out"
+              />
+
               <Image
                 resizeMode="contain"
                 source={Icons.angleIcon}

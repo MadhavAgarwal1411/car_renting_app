@@ -9,6 +9,8 @@ const CustomButton = ({
   textStyle,
   IconLeft,
   IconRight,
+  maxFontSizeMultiplier = 1.2,
+
   ...props
 }: ButtonProps) => (
   <TouchableOpacity
@@ -16,7 +18,9 @@ const CustomButton = ({
     className={`rounded-full  p-4  flex flex-row shadow-md shadow-neutral-400/70 ${classname}`}
   >
     {IconLeft && <IconLeft />}
-    <Text className={`${textStyle}`}>{title}</Text>
+    <Text className={`${textStyle}`} maxFontSizeMultiplier = {maxFontSizeMultiplier}>
+      {title}
+    </Text>
     {IconRight && <IconRight />}
   </TouchableOpacity>
 );

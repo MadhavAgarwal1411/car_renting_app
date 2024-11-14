@@ -8,6 +8,7 @@ import InputField from "@/components/shared/InputField";
 import { ActivityIndicator, Alert, Text, View } from "react-native";
 import { router } from "expo-router";
 import CustomButton from "./shared/CustomButton";
+import CustomText from "./shared/CustomText";
 
 const SignInForm = () => {
   const [email, setEmail] = useState<string>("");
@@ -22,7 +23,6 @@ const SignInForm = () => {
       await login({
         variables: { loginUserEmail2: email, loginUserPassword2: password },
       }).then((res) => {
-        console.log(res);
         if (res.data?.loginUser?.accessToken) {
           AsyncStorage.setItem("accessToken", res.data.loginUser.accessToken);
           AsyncStorage.setItem("refreshToken", res.data.loginUser.refreshToken);
@@ -83,7 +83,10 @@ const SignInForm = () => {
           onPress={handleLogin}
         />
       )}
-      <Text className="text-center text-red-600 mt-2">{message}</Text>
+      <CustomText
+        className="text-center text-red-600 mt-2"
+        text={`${message}`}
+      />
       {error && (
         <ShowAlert
           message={error.message}

@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInputProps, TouchableOpacityProps } from "react-native";
+import { TextInputProps, TextProps, TouchableOpacityProps } from "react-native";
 
 declare interface InputFieldProps extends TextInputProps {
   label: string;
@@ -12,6 +12,8 @@ declare interface InputFieldProps extends TextInputProps {
   className?: string;
   inputModeType?: string;
   editable?: boolean;
+  maxLabelSizeMultiplier?: number;
+  maxInputSizeMultiplier?: number;
 }
 
 declare interface ButtonProps extends TouchableOpacityProps {
@@ -22,6 +24,13 @@ declare interface ButtonProps extends TouchableOpacityProps {
   IconRight?: React.ComponentType<any>;
   classname?: string;
   textStyle?: string;
+  maxFontSizeMultiplier?: number;
+
+}
+declare interface CustomTextProps extends TextProps {
+  maxFontSizeMultiplier?: number;
+  text: string;
+  textVariant?: "primary" | "secondary";
 }
 declare interface TripHistoryDetails {
   tripId: string;

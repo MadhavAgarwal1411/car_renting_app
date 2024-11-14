@@ -12,24 +12,24 @@ const TabIcon = ({
   source: ImageSourcePropType;
   focused: boolean;
 }) => (
-  <View
-    className={`flex flex-row justify-center items-center rounded-full ${
-      focused ? "bg-general-300" : ""
-    }`}
-  >
-    <View
-      className={`flex w-12 h-12 justify-center items-center rounded-full ${
-        focused ? "bg-general-400" : ""
-      }`}
-    >
+  // <View
+  //   className={`flex flex-row justify-center items-center rounded-full ${
+  //     focused ? "bg-general-300" : ""
+  //   }`}
+  // >
+  //   <View
+  //     className={`flex w-12 h-12 justify-center items-center rounded-full ${
+  //       focused ? "bg-general-400" : ""
+  //     }`}
+  //   >
       <Image
         source={source}
         tintColor="white"
         resizeMode="contain"
         className="w-7 h-7"
       />
-    </View>
-  </View>
+  //   </View>
+  // </View>
 );
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -38,30 +38,27 @@ export default function RootLayout() {
   return (
     <Tabs
       initialRouteName="index"
+      // backBehavior=""
       screenOptions={{
         tabBarHideOnKeyboard: true,
         tabBarActiveBackgroundColor: "white",
-        tabBarInactiveBackgroundColor: "red",
+        // tabBarInactiveBackgroundColor: "red",
         // tabBarAllowFontScaling: false,
-
         tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "white",
-        tabBarShowLabel: false,
+        tabBarShowLabel: true,
         tabBarStyle: {
           backgroundColor: "#1E1E1E",
           opacity: 0.8,
           display: "flex",
           justifyContent: "space-around",
-          alignItems: "center",
           flexDirection: "row",
           position: "absolute",
           borderRadius: 10,
           marginHorizontal: 10,
           marginVertical: 5,
           overflow: "hidden",
-          height: 66,
-          paddingRight: 20,
-          paddingBottom: 10,
+          // paddingVertical: 10
         },
       }}
     >
@@ -72,19 +69,14 @@ export default function RootLayout() {
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} source={Icons.homeIcon} />
           ),
+          tabBarShowLabel: true,
+          tabBarActiveTintColor: "white",
+          tabBarActiveBackgroundColor: "#00000077",
+          tabBarLabel: "home",
+          tabBarLabelPosition: "below-icon",
           headerShown: false,
-          tabBarBadge: "home",
+          tabBarAccessibilityLabel: "home",
           tabBarAllowFontScaling: false,
-          tabBarBadgeStyle: {
-            color: "white",
-            backgroundColor: "black",
-            // fontSize: 8,
-            // marginBottom: 20,
-            // lineHeight: 40,
-            // textAlign: "justify",
-            paddingVertical: 2,
-            textAlignVertical: "center",
-          },
         }}
       />
       <Tabs.Screen
@@ -96,10 +88,9 @@ export default function RootLayout() {
           ),
           headerShown: false,
           tabBarAllowFontScaling: false,
-
-          tabBarBadge: "trip",
+          tabBarActiveBackgroundColor: "#00000077",
+          tabBarAccessibilityLabel: "trip",
           tabBarLabelStyle: { color: "white" },
-          tabBarBadgeStyle: { color: "white", backgroundColor: "black" },
         }}
       />
       <Tabs.Screen
@@ -110,11 +101,10 @@ export default function RootLayout() {
             <TabIcon focused={focused} source={Icons.rentIcon} />
           ),
           tabBarAllowFontScaling: false,
-
+          tabBarAccessibilityLabel: "rent",
+          tabBarActiveBackgroundColor: "#00000077",
           headerShown: false,
-          tabBarBadge: "rent",
           tabBarLabelStyle: { color: "white" },
-          tabBarBadgeStyle: { color: "white", backgroundColor: "black" },
         }}
       />
       <Tabs.Screen
@@ -124,12 +114,11 @@ export default function RootLayout() {
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} source={Icons.profileIcon} />
           ),
+          tabBarAccessibilityLabel: "profile",
+          tabBarActiveBackgroundColor: "#00000077",
           headerShown: false,
           tabBarAllowFontScaling: false,
-
-          tabBarBadge: "profile",
           tabBarLabelStyle: { color: "white" },
-          tabBarBadgeStyle: { color: "white", backgroundColor: "black" },
         }}
       />
     </Tabs>
